@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+  padding: 25px;
+  font-family: sans-serif;
+  /*background-color: lightblue;*/
+}
+
+.color div div {
+  width: 200px;
+  height: 100px;
+  border: none;
+}
+
+.color div {
+  border: 3px solid black;
+  background-color: white;
+}
+
+.color {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}

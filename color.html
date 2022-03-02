@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Color Picker</title>
+   <meta name="viewport" content="width=device-width,initial-scale=1" >
+
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <form name="color_picker" action="/script.js" onsubmit="display()" method="post">
+    <div>
+      <p>Primary color:</p>
+      <input type="radio" id="red" name="primary_color" value="red">
+      <label for="red">Red</label><br>
+      <input type="radio" id="orange" name="primary_color" value="orange">
+      <label for="orange">Orange</label><br>
+      <input type="radio" id="yellow" name="primary_color" value="yellow">
+      <label for="yellow">Yellow</label><br>
+      <input type="radio" id="green" name="primary_color" value="green">
+      <label for="green">Green</label><br>
+      <input type="radio" id="blue" name="primary_color" value="blue">
+      <label for="blue">Blue</label><br>
+      <input type="radio" id="purple" name="primary_color" value="purple">
+      <label for="purple">Purple</label><br>
+      <input type="radio" id="pink" name="primary_color" value="pink">
+      <label for="pink">Pink</label><br>
+    </div>
+
+    <div>
+      <p>Palette pattern:</p>
+      <input type="radio" id="analogous" name="palette_pattern" value="analogous">
+      <label for="analogous">Analogous</label><br>
+      <input type="radio" id="monochromatic" name="palette_pattern" value="monochromatic">
+      <label for="monochromatic">Monochromatic</label><br>
+      <input type="radio" id="complementary" name="palette_pattern" value="complementary">
+      <label for="complementary">Complementary</label><br>
+      <input type="radio" id="split" name="palette_pattern" value="split">
+      <label for="split">Split Complementary</label><br>
+      <input type="radio" id="triadic" name="palette_pattern" value="triadic">
+      <label for="triadic">Triadic</label><br>
+    </div>
+
+    <input type="submit" value="Generate">
+  </form>
+
+  <div class = "color">
+    <div>
+      <div id="color-1"></div>
+      <h3 id='label-1'>Color 1</h3>
+	  </div>
+    <div>
+      <div id="color-2"></div>
+      <h3 id='label-2'>Color 2</h3>
+	  </div>
+    <div>
+      <div id="color-3"></div>
+      <h3 id='label-3'>Color 3</h3>
+	  </div>
+    <div>
+      <div id="color-4"></div>
+      <h3 id="label-4">Color 4</h3>
+	  </div>
+    <div>
+      <div id="color-5"></div>
+      <h3 id="label-5">Color 5</h3>
+	  </div>
+	  <script src="script.js"></script>
+  </div>
+</body>
+</html>
