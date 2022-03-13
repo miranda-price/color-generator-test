@@ -28,7 +28,10 @@ debug color conversion
 6 digits for all, not 5
 right color
 */
-const hslConvert = function (h, s, l) {
+const hslConvert = function (hsl) {
+    const h = hsl[0];
+    const s = hsl[1];
+    const l = hsl[2];
     const c = (1 - Math.abs((2*(l/100))-1)) * (s/100);
     const x = c * (1-Math.abs(((h/60)%2)-1));
     const m = (l/100) - (c/2);
@@ -110,63 +113,63 @@ const generatePalette = function(color, pattern) {
     let saturation = (Math.floor(Math.random()*55))+25
     let light1 = (Math.floor(Math.random()*15))+77;
     let light2 = (Math.floor(Math.random()*30))+25;
-    color2 = `hsl(${primary}, ${saturation}%, ${light2}%)`;
-    document.getElementById('label-2').innerHTML = hslConvert(primary, saturation, light2);
+    color2 = [primary, saturation, light2];
+    document.getElementById('label-2').innerHTML = color2;
 
     // calculate accents
     if(pattern === 'monochromatic') {
         let saturation2 = (Math.floor(Math.random()*15))+80;
-        color1 = `hsl(${primary}, ${saturation}%, ${light1}%)`;
-        document.getElementById('label-1').innerHTML = hslConvert(primary, saturation, light1);
-        color3 = `hsl(${primary}, ${saturation2}%, ${light1-25}%)`;
-        document.getElementById('label-3').innerHTML = hslConvert(primary, saturation2, light1-25);
-        color4 = `hsl(${primary}, ${((saturation+saturation2)/2)+5}%, ${light2+15}%)`;
-        document.getElementById('label-4').innerHTML = hslConvert(primary, ((saturation+saturation2)/2)+5, light2+15);
-        color5 = `hsl(${primary}, ${((saturation+saturation2)/2)+5}%, ${light1-5}%)`;
-        document.getElementById('label-5').innerHTML = hslConvert(primary, ((saturation+saturation2)/2)+5, light1-5);
+        color1 = [primary, saturation, light1];
+        document.getElementById('label-1').innerHTML = color1;
+        color3 = [primary,saturation2, light1-25];
+        document.getElementById('label-3').innerHTML = color3;
+        color4 = [primary, ((saturation+saturation2)/2)+5, light2+15];
+        document.getElementById('label-4').innerHTML = color4;
+        color5 = [primary, ((saturation+saturation2)/2)+5,light1-5];
+        document.getElementById('label-5').innerHTML = color5;
     } else if(pattern === 'complementary') {
         let saturation2 = (Math.floor(Math.random()*15))+80;
         let secondary = (primary+180);
-        color1 = `hsl(${primary}, ${saturation}%, ${light1}%)`;
-        document.getElementById('label-1').innerHTML = hslConvert(primary, saturation, light1);
-        color3 = `hsl(${secondary}, ${saturation}%, ${light1-25}%)`;
-        document.getElementById('label-3').innerHTML = hslConvert(secondary, saturation, light1-25);
-        color4 = `hsl(${primary}, ${saturation2}%, ${light2+5}%)`;
-        document.getElementById('label-4').innerHTML = hslConvert(primary, saturation2, light2+5);
-        color5 = `hsl(${secondary}, ${saturation2}%, ${light2+5}%)`;
-        document.getElementById('label-5').innerHTML = hslConvert(secondary, saturation2, light2+5);
+        color1 = [primary, saturation, light1];
+        document.getElementById('label-1').innerHTML = color1;
+        color3 = [primary,saturation2, light1-25];
+        document.getElementById('label-3').innerHTML = color3;
+        color4 = [primary, ((saturation+saturation2)/2)+5, light2+15];
+        document.getElementById('label-4').innerHTML = color4;
+        color5 = [primary, ((saturation+saturation2)/2)+5,light1-5];
+        document.getElementById('label-5').innerHTML = color5;
     } else if(pattern === 'triadic') {
         let saturation2 = (Math.floor(Math.random()*15))+80;
         let secondary = (primary+120);
         let tertiary = (secondary+120);
-        color1 = `hsl(${secondary}, ${saturation}%, ${light1}%)`;
-        document.getElementById('label-1').innerHTML = hslConvert(secondary, saturation, light1);
-        color3 = `hsl(${tertiary}, ${saturation}%, ${light1-25}%)`;
-        document.getElementById('label-3').innerHTML = hslConvert(tertiary, saturation, light1-25);
-        color4 = `hsl(${secondary}, ${saturation2}%, ${light2+5}%)`;
-        document.getElementById('label-4').innerHTML = hslConvert(secondary, saturation2, light2+5);
-        color5 = `hsl(${tertiary}, ${saturation2}%, ${light2+5}%)`;
-        document.getElementById('label-5').innerHTML = hslConvert(tertiary, saturation2, light2+5);
+        color1 = [primary, saturation, light1];
+        document.getElementById('label-1').innerHTML = color1;
+        color3 = [primary,saturation2, light1-25];
+        document.getElementById('label-3').innerHTML = color3;
+        color4 = [primary, ((saturation+saturation2)/2)+5, light2+15];
+        document.getElementById('label-4').innerHTML = color4;
+        color5 = [primary, ((saturation+saturation2)/2)+5,light1-5];
+        document.getElementById('label-5').innerHTML = color5;
     } else if(pattern === 'analogous') {
         let saturation2 = (Math.floor(Math.random()*15))+80;
-        color1 = `hsl(${primary-30}, ${saturation}%, ${light1}%)`;
-        document.getElementById('label-1').innerHTML = hslConvert(primary-30, saturation, light1);
-        color3 = `hsl(${primary+30}, ${saturation}%, ${light1-25}%)`;
-        document.getElementById('label-3').innerHTML = hslConvert(primary+30, saturation, light1-25);
-        color4 = `hsl(${primary-60}, ${saturation2}%, ${light2+5}%)`;
-        document.getElementById('label-4').innerHTML = hslConvert(primary-60, saturation2, light2+5);
-        color5 = `hsl(${primary+60}, ${saturation2}%, ${light2+5}%)`;
-        document.getElementById('label-5').innerHTML = hslConvert(primary+60, saturation2, light2+5);
+        color1 = [primary, saturation, light1];
+        document.getElementById('label-1').innerHTML = color1;
+        color3 = [primary,saturation2, light1-25];
+        document.getElementById('label-3').innerHTML = color3;
+        color4 = [primary, ((saturation+saturation2)/2)+5, light2+15];
+        document.getElementById('label-4').innerHTML = color4;
+        color5 = [primary, ((saturation+saturation2)/2)+5,light1-5];
+        document.getElementById('label-5').innerHTML = color5;
     } else if(pattern === 'split') {
         let saturation2 = (Math.floor(Math.random()*15))+80;
-        color1 = `hsl(${primary-150}, ${saturation}%, ${light1}%)`;
-        document.getElementById('label-1').innerHTML = hslConvert(primary-150, saturation, light1);
-        color3 = `hsl(${primary+150}, ${saturation}%, ${light1-25}%)`;
-        document.getElementById('label-3').innerHTML = hslConvert(primary+150, saturation, light1-25);
-        color4 = `hsl(${primary-150}, ${saturation2}%, ${light2+5}%)`;
-        document.getElementById('label-4').innerHTML = hslConvert(primary-150, saturation2, light2+5);
-        color5 = `hsl(${primary+150}, ${saturation2}%, ${light2+5}%)`;
-        document.getElementById('label-5').innerHTML = hslConvert(primary+150, saturation2, light2+5);
+        color1 = [primary, saturation, light1];
+        document.getElementById('label-1').innerHTML = color1;
+        color3 = [primary,saturation2, light1-25];
+        document.getElementById('label-3').innerHTML = color3;
+        color4 = [primary, ((saturation+saturation2)/2)+5, light2+15];
+        document.getElementById('label-4').innerHTML = color4;
+        color5 = [primary, ((saturation+saturation2)/2)+5,light1-5];
+        document.getElementById('label-5').innerHTML = color5;
     } else {
         color1 = `#fff`;
         document.getElementById('label-1').innerHTML = '#FFFFFF';
@@ -181,11 +184,11 @@ const generatePalette = function(color, pattern) {
     }
 
     // set color
-    colorBox1.style.backgroundColor = color1;
-    colorBox2.style.backgroundColor = color2;
-    colorBox3.style.backgroundColor = color3;
-    colorBox4.style.backgroundColor = color4;
-    colorBox5.style.backgroundColor = color5;
+    colorBox1.style.backgroundColor = hslConvert(color1);
+    colorBox2.style.backgroundColor = hslConvert(color2);
+    colorBox3.style.backgroundColor = hslConvert(color3);
+    colorBox4.style.backgroundColor = hslConvert(color4);
+    colorBox5.style.backgroundColor = hslConvert(color5);
 }
 
 const display = function() {
