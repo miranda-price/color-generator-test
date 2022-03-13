@@ -22,12 +22,6 @@ const getGuidelines = function() {
 }
 
 // hsl to rgb converter
-/*
-split into two functions
-debug color conversion
-6 digits for all, not 5
-right color
-*/
 const hslConvert = function (hsl) {
     const h = hsl[0];
     const s = hsl[1];
@@ -113,19 +107,19 @@ const generatePalette = function(color, pattern) {
     let saturation = (Math.floor(Math.random()*55))+25
     let light1 = (Math.floor(Math.random()*15))+77;
     let light2 = (Math.floor(Math.random()*30))+25;
-    color2 = [primary, saturation, light2];
+    color2 = hslConvert([primary, saturation, light2]);
     document.getElementById('label-2').innerHTML = color2;
 
     // calculate accents
     if(pattern === 'monochromatic') {
         let saturation2 = (Math.floor(Math.random()*15))+80;
-        color1 = [primary, saturation, light1];
+        color1 = hslConvert([primary, saturation, light1]);
         document.getElementById('label-1').innerHTML = color1;
-        color3 = [primary,saturation2, light1-25];
+        color3 = hslConvert([primary,saturation2, light1-25]);
         document.getElementById('label-3').innerHTML = color3;
-        color4 = [primary, ((saturation+saturation2)/2)+5, light2+15];
+        color4 = hslConvert([primary, ((saturation+saturation2)/2)+5, light2+15]);
         document.getElementById('label-4').innerHTML = color4;
-        color5 = [primary, ((saturation+saturation2)/2)+5,light1-5];
+        color5 = hslConvert([primary, ((saturation+saturation2)/2)+5,light1-5]);
         document.getElementById('label-5').innerHTML = color5;
     } else if(pattern === 'complementary') {
         let saturation2 = (Math.floor(Math.random()*15))+80;
@@ -184,11 +178,11 @@ const generatePalette = function(color, pattern) {
     }
 
     // set color
-    colorBox1.style.backgroundColor = hslConvert(color1);
-    colorBox2.style.backgroundColor = hslConvert(color2);
-    colorBox3.style.backgroundColor = hslConvert(color3);
-    colorBox4.style.backgroundColor = hslConvert(color4);
-    colorBox5.style.backgroundColor = hslConvert(color5);
+    colorBox1.style.backgroundColor = color1;
+    colorBox2.style.backgroundColor = color2;
+    colorBox3.style.backgroundColor = color3;
+    colorBox4.style.backgroundColor = color4;
+    colorBox5.style.backgroundColor = color5;
 }
 
 const display = function() {
