@@ -190,16 +190,25 @@ const generatePalette = function(color, pattern) {
         }
     } 
     
-    /*else if(pattern === 'split') {
-        let saturation2 = (Math.floor(Math.random()*15))+80;
-        color1 = [primary, saturation, light1];
-        document.getElementById('label-1').innerHTML = color1;
-        color3 = [primary,saturation2, light1-25];
-        document.getElementById('label-3').innerHTML = color3;
-        color4 = [primary, ((saturation+saturation2)/2)+5, light2+15];
-        document.getElementById('label-4').innerHTML = color4;
-        color5 = [primary, ((saturation+saturation2)/2)+5,light1-5];
-        document.getElementById('label-5').innerHTML = color5;
+    else if(pattern === 'split') {
+        secondary = (primary+150);
+        tertiary = (primary-150);
+
+        if(light) {
+            color1 = hslConvert([primary, satLow, lightHigh]);
+            color2 = hslConvert([primary, satMed, lightLow]);
+            color3 = hslConvert([secondary, satHigh, lightMed]);
+            color4 = hslConvert([tertiary, satMed, lightMed]);
+            color5 = hslConvert([tertiary, satMed, lightHigh]);
+        }
+
+        if(dark) {
+            color1 = hslConvert([primary, satMed, lightLow]);
+            color2 = hslConvert([primary, satHigh, lightHigh]);
+            color3 = hslConvert([secondary, satHigh, lightHigh]);
+            color4 = hslConvert([tertiary, satLow, lightMed]);
+            color5 = hslConvert([tertiary, satLow, lightHigh]);
+        }
     } 
     
     else {
@@ -213,7 +222,7 @@ const generatePalette = function(color, pattern) {
         document.getElementById('label-4').innerHTML = '#FFFFFF';
         color5 = `#fff`;
         document.getElementById('label-5').innerHTML = '#FFFFFF';
-    }*/
+    }
 
     // set color
     colorBox1.style.backgroundColor = color1;
