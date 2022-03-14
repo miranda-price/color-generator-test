@@ -7,8 +7,8 @@
   <link href="style.css" rel="stylesheet">
 </head>
 <body>
-  <form name="color_picker" action="#" onsubmit="display();return false">
-    <div>
+  <form class="grid-container" name="color_picker" action="#" onsubmit="display();return false">
+    <div class="grid-item1">
       <p>Primary color:</p>
       <input type="radio" id="red" name="primary_color" value="red">
       <label for="red">Red</label><br>
@@ -28,7 +28,7 @@
       <label for="pink">Pink</label><br>
     </div>
 
-    <div>
+    <div class="grid-item2"> 
       <p>Palette pattern:</p>
       <input type="radio" id="analogous" name="palette_pattern" value="analogous">
       <label for="analogous">Analogous</label><br>
@@ -42,7 +42,7 @@
       <label for="triadic">Triadic</label><br>
     </div>
 
-    <div>
+    <div class="grid-item3">
       <p>Light or Dark Mode:</p>
       <input type="radio" id="light" name="light_dark" value="light">
       <label for="light">Light</label><br>
@@ -50,7 +50,7 @@
       <label for="dark">Dark</label>
     </div>
 
-    <input type="submit" value="Generate">
+    <input class="grid-item4" type="submit" value="Generate">
   </form>
 
   <div class = "color">
@@ -74,7 +74,7 @@
       <div id="color-5"></div>
       <h3 id="label-5">Color 5</h3>
 	  </div>
-	  <script src="script.js"></script>
+	  <script src="https://miranda-price.github.io/color-generator-test/script.js"></script>
   </div>
 </body>
 </html>
