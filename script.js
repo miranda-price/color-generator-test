@@ -108,20 +108,19 @@ const generatePalette = function(color, pattern) {
 
     // calculate palettes
     if(pattern === 'monochromatic') {
-        let saturation2 = (Math.floor(Math.random()*15))+80;
-        color1 = hslConvert([primary, saturation, light1]);
+        color1 = hslConvert([primary, 20, 90]);
         document.getElementById('label-1').innerHTML = color1;
-        color2 = hslConvert([primary, saturation, light2]);
+        color2 = hslConvert([primary, 60, 60]);
         document.getElementById('label-2').innerHTML = color2;
-        color3 = hslConvert([primary,saturation2, light1-25]);
+        color3 = hslConvert([primary,90, 80]);
         document.getElementById('label-3').innerHTML = color3;
-        color4 = hslConvert([primary, ((saturation+saturation2)/2)+5, light2+15]);
+        color4 = hslConvert([primary, 40, 20]);
         document.getElementById('label-4').innerHTML = color4;
-        color5 = hslConvert([primary, ((saturation+saturation2)/2)+5,light1-5]);
+        color5 = hslConvert([primary, 40, 50]);
         document.getElementById('label-5').innerHTML = color5;
     } 
     
-    else if(pattern === 'complementary') {
+    /*else if(pattern === 'complementary') {
         let saturation2 = (Math.floor(Math.random()*15))+80;
         let secondary = (primary+180);
         color1 = [primary, saturation, light1];
@@ -183,7 +182,7 @@ const generatePalette = function(color, pattern) {
         document.getElementById('label-4').innerHTML = '#FFFFFF';
         color5 = `#fff`;
         document.getElementById('label-5').innerHTML = '#FFFFFF';
-    }
+    }*/
 
     // set color
     colorBox1.style.backgroundColor = color1;
