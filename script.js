@@ -73,32 +73,35 @@ adjust color order/function
 refine selection? combine sections?
 
 hue breakdown
-red 0-20, 334-360 46
-orange 20-44 24
-yellow 45-74 39
-green 75-159 84
-blue 160-259 99
-violet 260-314 54
-pink 315-334 19
+red 0-20, 334-360 46        0-10 and 350-360
+orange 20-44 24             20-30 / 10 + 20
+yellow 45-74 39             40-60 / 20 + 40
+green 75-159 84             90-140 / 50 + 90
+teal                        150-170 / 20 + 150
+blue 160-259 99             180-250 / 70 + 180
+violet 260-314 54           270-300 / 30 + 270
+pink 315-334 19             310-330 / 20 + 310
 */
 
 const generatePalette = function(color, pattern) {
     // generate primary color
-    let primary = Math.floor(Math.random()*25);
+    let primary;
     if (color === 'red') {
-        primary = primary+350;
+        primary = Math.floor(Math.random()*20) + 360;
     } else if (color === 'orange') {
-        primary += 20;
+        primary = Math.floor(Math.random()*10) + 20;
     } else if (color === 'green') {
-        primary += 108;
+        primary = Math.floor(Math.random()*50) + 90;
     } else if (color === 'yellow') {
-        primary = Math.floor(primary/3) + 50;
+        primary = Math.floor(Math.random()*20) + 40;
+    } else if (color === 'teal') {
+        primary = Math.floor(Math.random()*20) + 150;
     } else if (color === 'blue') {
-        primary += 208;
+        primary = Math.floor(Math.random()*70) + 180;
     } else if (color === 'purple') {
-        primary += 273;
+        primary = Math.floor(Math.random()*30) + 310;
     } else if (color === 'pink') {
-        primary += 313;
+        primary = Math.floor(Math.random()*20) + 310;
     } else {
         primary = Math.floor(Math.random()*360);
     }
