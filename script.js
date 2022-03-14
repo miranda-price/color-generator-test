@@ -132,7 +132,7 @@ const generatePalette = function(color, pattern) {
     else if(pattern === 'complementary') {
         secondary = primary+180
         if(light) {
-            color1 = hslConvert([primary, Math.floor(Math.random()*10), lightHigh]);
+            color1 = hslConvert([primary, satLow, lightHigh]);
             color2 = hslConvert([primary, satMed, lightLow]);
             color3 = hslConvert([secondary, satMed, lightHigh]);
             color4 = hslConvert([secondary, satLow, lightMed]);
@@ -140,7 +140,7 @@ const generatePalette = function(color, pattern) {
         }
 
         if(dark) {
-            color1 = hslConvert([primary, Math.floor(Math.random()*10), lightLow]);
+            color1 = hslConvert([primary, satLow, lightLow]);
             color2 = hslConvert([primary, satHigh, lightHigh]);
             color3 = hslConvert([secondary, satHigh, lightHigh]);
             color4 = hslConvert([secondary, satLow, lightMed]);
@@ -153,7 +153,7 @@ const generatePalette = function(color, pattern) {
         tertiary = (secondary+120);
 
         if(light) {
-            color1 = hslConvert([primary, Math.floor(Math.random()*10), lightHigh]);
+            color1 = hslConvert([primary, satLow, lightHigh]);
             color2 = hslConvert([primary, satMed, lightLow]);
             color3 = hslConvert([secondary, satMed, lightMed]);
             color4 = hslConvert([tertiary, satLow, lightLow]);
@@ -161,7 +161,7 @@ const generatePalette = function(color, pattern) {
         }
 
         if(dark) {
-            color1 = hslConvert([primary, Math.floor(Math.random()*10), lightLow]);
+            color1 = hslConvert([primary, satLow, lightLow]);
             color2 = hslConvert([primary, satHigh, lightHigh]);
             color3 = hslConvert([secondary, satHigh, lightHigh]);
             color4 = hslConvert([tertiary, satLow, lightMed]);
