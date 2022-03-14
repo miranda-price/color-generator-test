@@ -8,8 +8,10 @@ body {
 }
 
 .color div div {
-  width: 200px;
-  height: 100px;
+  width: 16vw;
+  height: 8vw;
+  min-width: 100%;
+  min-height: 75px;
   border: none;
 }
 
@@ -22,4 +24,10 @@ body {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .color {
+    font-size: 11px;
+  }
 }
