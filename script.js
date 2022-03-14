@@ -122,27 +122,33 @@ const generatePalette = function(color, pattern) {
 
         if(dark) {
             color1 = hslConvert([primary, Math.floor(Math.random()*10), lightLow]);
-            color2 = hslConvert([primary, satLow, lightMed]);
+            color2 = hslConvert([primary, satLow, lightHigh]);
             color3 = hslConvert([primary, satMed, lightHigh]);
-            color4 = hslConvert([primary, satMed, lightLow]);
-            color5 = hslConvert([primary, satHigh, lightLow]);
+            color4 = hslConvert([primary, satMed, lightMed]);
+            color5 = hslConvert([primary, satHigh, lightMed]);
         }
     } 
     
-    /*else if(pattern === 'complementary') {
-        let saturation2 = (Math.floor(Math.random()*15))+80;
-        let secondary = (primary+180);
-        color1 = [primary, saturation, light1];
-        document.getElementById('label-1').innerHTML = color1;
-        color3 = [primary,saturation2, light1-25];
-        document.getElementById('label-3').innerHTML = color3;
-        color4 = [primary, ((saturation+saturation2)/2)+5, light2+15];
-        document.getElementById('label-4').innerHTML = color4;
-        color5 = [primary, ((saturation+saturation2)/2)+5,light1-5];
-        document.getElementById('label-5').innerHTML = color5;
+    else if(pattern === 'complementary') {
+        secondary = primary+180
+        if(light) {
+            color1 = hslConvert([primary, Math.floor(Math.random()*10), lightHigh]);
+            color2 = hslConvert([primary, satMed, lightLow]);
+            color3 = hslConvert([secondary, satMed, lightHigh]);
+            color4 = hslConvert([secondary, satLow, lightMed]);
+            color5 = hslConvert([primary, satLow, lightMed]);
+        }
+
+        if(dark) {
+            color1 = hslConvert([primary, Math.floor(Math.random()*10), lightLow]);
+            color2 = hslConvert([primary, satHigh, lightHigh]);
+            color3 = hslConvert([secondary, satHigh, lightHigh]);
+            color4 = hslConvert([secondary, satLow, lightMed]);
+            color5 = hslConvert([primary, satLow, lightMed]);
+        }
     } 
     
-    else if(pattern === 'triadic') {
+    /*else if(pattern === 'triadic') {
         let saturation2 = (Math.floor(Math.random()*15))+80;
         let secondary = (primary+120);
         let tertiary = (secondary+120);
