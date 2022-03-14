@@ -169,19 +169,28 @@ const generatePalette = function(color, pattern) {
         }
     } 
     
-    /*else if(pattern === 'analogous') {
-        let saturation2 = (Math.floor(Math.random()*15))+80;
-        color1 = [primary, saturation, light1];
-        document.getElementById('label-1').innerHTML = color1;
-        color3 = [primary,saturation2, light1-25];
-        document.getElementById('label-3').innerHTML = color3;
-        color4 = [primary, ((saturation+saturation2)/2)+5, light2+15];
-        document.getElementById('label-4').innerHTML = color4;
-        color5 = [primary, ((saturation+saturation2)/2)+5,light1-5];
-        document.getElementById('label-5').innerHTML = color5;
+    else if(pattern === 'analogous') {
+        secondary = (primary+30);
+        tertiary = (primary-30);
+
+        if(light) {
+            color1 = hslConvert([primary, Math.floor(Math.random()*10), lightHigh]);
+            color2 = hslConvert([primary, satMed, lightLow]);
+            color3 = hslConvert([secondary, satHigh, lightMed]);
+            color4 = hslConvert([tertiary, satLow, lightLow]);
+            color5 = hslConvert([tertiary, satLow, lightMed]);
+        }
+
+        if(dark) {
+            color1 = hslConvert([primary, Math.floor(Math.random()*10), lightLow]);
+            color2 = hslConvert([primary, satMed, lightHigh]);
+            color3 = hslConvert([secondary, satHigh, lightHigh]);
+            color4 = hslConvert([tertiary, satLow, lightMed]);
+            color5 = hslConvert([tertiary, satLow, lightHigh]);
+        }
     } 
     
-    else if(pattern === 'split') {
+    /*else if(pattern === 'split') {
         let saturation2 = (Math.floor(Math.random()*15))+80;
         color1 = [primary, saturation, light1];
         document.getElementById('label-1').innerHTML = color1;
