@@ -13,12 +13,20 @@ const colorBox3 = document.getElementById('color-3');
 const colorBox4 = document.getElementById('color-4');
 const colorBox5 = document.getElementById('color-5');
 
-let colorRadio = '';
-let patternRadio = '';
+var colorRadio, patternRadio, lightRadio, lightMode, darkMode;
 
 const getGuidelines = function() {
     colorRadio = document.forms["color_picker"]["primary_color"].value;
     patternRadio = document.forms["color_picker"]["palette_pattern"].value;
+    lightRadio = document.forms["color_picker"]["light_dark"].value;
+
+    if(lightRadio === "light") {
+        light = true;
+        dark = false;
+    } else {
+        light = false;
+        dark = true;
+    }
 }
 
 // hsl to rgb converter
@@ -68,19 +76,7 @@ const hslConvert = function (hsl) {
 
 /*
 check for contrast ratio
-remove color 2 from constants
 adjust color order/function
-refine selection? combine sections?
-
-hue breakdown
-red 0-20, 334-360 46        0-10 and 350-360
-orange 20-44 24             20-30 / 10 + 20
-yellow 45-74 39             40-60 / 20 + 40
-green 75-159 84             90-140 / 50 + 90
-teal                        150-170 / 20 + 150
-blue 160-259 99             180-250 / 70 + 180
-violet 260-314 54           270-300 / 30 + 270
-pink 315-334 19             310-330 / 20 + 310
 */
 
 const generatePalette = function(color, pattern) {
