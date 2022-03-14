@@ -81,7 +81,14 @@ adjust color order/function
 
 const generatePalette = function(color, pattern) {
     // generate primary color
-    let primary;
+    var primary, secondary, tertiary; 
+    let satHigh = Math.floor(Math.random()*20)+65;
+    let satLow = Math.floor(Math.random()*20)+15;
+    let satMed = Math.floor(Math.random()*20)+40; 
+    let lightHigh = Math.floor(Math.random()*20)+65;
+    let lightLow = Math.floor(Math.random()*20)+15; 
+    let lightMed = Math.floor(Math.random()*20)+40;
+
     if (color === 'red') {
         primary = Math.floor(Math.random()*20) + 360;
     } else if (color === 'orange') {
@@ -95,7 +102,7 @@ const generatePalette = function(color, pattern) {
     } else if (color === 'blue') {
         primary = Math.floor(Math.random()*70) + 180;
     } else if (color === 'purple') {
-        primary = Math.floor(Math.random()*30) + 310;
+        primary = Math.floor(Math.random()*30) + 270;
     } else if (color === 'pink') {
         primary = Math.floor(Math.random()*20) + 310;
     } else {
@@ -104,16 +111,22 @@ const generatePalette = function(color, pattern) {
 
     // calculate palettes
     if(pattern === 'monochromatic') {
-        color1 = hslConvert([primary, 20, 90]);
-        document.getElementById('label-1').innerHTML = color1;
-        color2 = hslConvert([primary, 60, 60]);
-        document.getElementById('label-2').innerHTML = color2;
-        color3 = hslConvert([primary,90, 80]);
-        document.getElementById('label-3').innerHTML = color3;
-        color4 = hslConvert([primary, 40, 20]);
-        document.getElementById('label-4').innerHTML = color4;
-        color5 = hslConvert([primary, 40, 50]);
-        document.getElementById('label-5').innerHTML = color5;
+
+        if(light) {
+            color1 = hslConvert([primary, Math.floor(Math.random()*10), lightHigh]);
+            color2 = hslConvert([primary, satMed, lightLow]);
+            color3 = hslConvert([primary, satHigh, lightMed]);
+            color4 = hslConvert([primary, satLow, lightMed]);
+            color5 = hslConvert([primary, satLow, lightHigh]);
+        }
+
+        if(dark) {
+            color1 = hslConvert([primary, Math.floor(Math.random()*10), lightLow]);
+            color2 = hslConvert([primary, satLow, lightMed]);
+            color3 = hslConvert([primary, satMed, lightHigh]);
+            color4 = hslConvert([primary, satMed, lightLow]);
+            color5 = hslConvert([primary, satHigh, lightLow]);
+        }
     } 
     
     /*else if(pattern === 'complementary') {
@@ -186,6 +199,12 @@ const generatePalette = function(color, pattern) {
     colorBox3.style.backgroundColor = color3;
     colorBox4.style.backgroundColor = color4;
     colorBox5.style.backgroundColor = color5;
+
+    document.getElementById('label-1').innerHTML = color1;
+    document.getElementById('label-2').innerHTML = color2;
+    document.getElementById('label-3').innerHTML = color3;
+    document.getElementById('label-4').innerHTML = color4;
+    document.getElementById('label-5').innerHTML = color5;
 }
 
 const display = function() {
